@@ -35,18 +35,14 @@ KeyboardInputManager.prototype.listen = function () {
   var self = this;
 
   var map = {
-    38: 0, // Up
-    39: 1, // Right
-    40: 2, // Down
+    39: 2, // Right
     37: 3, // Left
-    75: 0, // vim keybindings
-    76: 1,
-    74: 2,
-    72: 3,
     87: 0, // W
-    68: 1, // D
-    83: 2, // S
-    65: 3  // A
+    69: 1, // E
+    65: 2, // A
+    68: 3, // D
+    90: 4, // Z
+    88: 5  // X
   };
 
   document.addEventListener("keydown", function (event) {
@@ -114,7 +110,7 @@ KeyboardInputManager.prototype.listen = function () {
 
     if (Math.max(absDx, absDy) > 10) {
       // (right : left) : (down : up)
-      self.emit("move", absDx > absDy ? (dx > 0 ? 1 : 3) : (dy > 0 ? 2 : 0));
+      self.emit("move", absDx > absDy ? (dx > 0 ? 3 : 2) : (dy > 0 ? (dx > 0 ? 5 : 4) : (dx > 0 ? 1 : 0)));
     }
   });
 };
